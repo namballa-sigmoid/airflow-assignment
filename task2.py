@@ -1,4 +1,3 @@
-# Task 2
 import psycopg2
 import logging
 
@@ -6,7 +5,7 @@ logging.basicConfig(filename='logs.log', level=logging.INFO,
                     format='%(asctime)s: %(levelname)s --> %(funcName)s() --> %(message)s')
 
 
-def insert_column_header():
+def create_table():
     query = """CREATE TABLE weather(
             STATE VARCHAR(30),
             DESCRIPTION varchar(30),
@@ -30,4 +29,3 @@ def insert_column_header():
     except Exception as e:
         logging.info("Error: ", e)
 
-# insert_column_header()

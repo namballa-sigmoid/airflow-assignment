@@ -1,9 +1,9 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
-from weather_info import curr_weather_data
-from create_table import insert_column_header
-from insert_into_table import insert_values
+from task1 import get_weather_data
+from task2 import create_table
+from task3 import insert_columns
 
 default_args = {
     "owner": "Mukesh",
@@ -18,10 +18,8 @@ default_args = {
 
 dag = DAG("Dag", default_args=default_args, schedule_interval="0 6 * * *")
 
-t1 = PythonOperator(task_id='create_csv', python_callable=curr_weather_data, dag=dag)
-t2 = PythonOperator(task_id='create_table', python_callable=insert_column_header, dag=dag)
-t3 = PythonOperator(task_id='insert_value', python_callable=insert_values, dag=dag)
-
-
+t1 = PythonOperator(task_id='create_csv', python_callable=get_weather_data, dag=dag)
+t2 = PythonOperator(task_id='create_table', python_callable=create_table, dag=dag)
+t3 = PythonOperator(task_id='insert_value', python_callable=insert_columns, dag=dag)
 
 t1 >> t2 >> t3

@@ -2,14 +2,13 @@ import requests
 import pandas as pd
 
 
-#task 1
-def curr_weather_data():
+def get_weather_data():
     url = 'https://community-open-weather-map.p.rapidapi.com/weather'
     headers = {
         'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        'x-rapidapi-key': '2ea8674075msh1d4853b18d14611p1af953jsn07b6e4644686'
+        'x-rapidapi-key': '5msh1d611p2ea8674071af953jsn07b6e46446864853b18d14'
     }
-    cities = ['Jhansi', 'Agra', 'Kanpur', 'Mumbai', 'Pune', 'Amritsar', 'Kolkata', 'Chandigarh', 'Nagpur', 'Patna']
+    cities = ['Mumbai', 'Pune', 'Amritsar', 'Jhansi', 'Agra', 'Kanpur', 'Kolkata', 'Chandigarh', 'Nagpur', 'Patna']
     details = []
     for city in cities:
         querystring = {'q': f'{city},India', 'lat': '0', 'lon': '0', 'id': '2172797',
@@ -24,6 +23,3 @@ def curr_weather_data():
     print(df.head())
     df.to_csv('weather.csv', index=False)
 
-
-
-# curr_weather_data()

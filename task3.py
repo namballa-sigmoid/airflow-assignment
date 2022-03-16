@@ -1,11 +1,10 @@
-# Task 3
 import pandas as pd
 import logging
 import psycopg2
 
 logging.basicConfig(filename='logs.log', level=logging.INFO,
                     format='%(asctime)s: %(levelname)s --> %(funcName)s() --> %(message)s')
-def insert_values():
+def insert_columns():
     df = pd.read_csv('weather.csv')
     print(df.head())
 
@@ -31,5 +30,3 @@ def insert_values():
 
     except Exception as e:
         logging.info("Error: ", e)
-
-# insert_values()
